@@ -1,6 +1,6 @@
-import phoneBookParser from './phoneBookParser';
+import phoneDirectoryParser from './phoneDirectoryParser';
 
-describe('phoneBookParser', () => {
+describe('phoneDirectoryParser', () => {
   const phoneBook = '/+1-541-754-3010 156 Alphand_St. <J Steeve>\n 133, Green, Rd. <E Kustur> NY-56423 ;+1-541-914-3010\n'
     + '+1-541-984-3012 <P Reed> /PO Box 530; Pollocksville, NC-28573\n :+1-321-512-2222 <Paul Dive> Sequoia Alley PQ-67209\n'
     + '+1-741-984-3090 <Peter Reedgrave> _Chicago\n :+1-921-333-2222 <Anna Stevens> Haramburu_Street AA-67209\n'
@@ -53,27 +53,27 @@ describe('phoneBookParser', () => {
     'Ontario Bd.','Oxford Street CQ-23071','Moon Street Peterville'].map(x=>x.trim());
 
   test('Basic tests', () => {
-    expect(phoneBookParser(phoneBook, '48-421-674-8974')).toBe('Phone => 48-421-674-8974, Name => Anastasia, Address => Via Quirinal Roma');
-    expect(phoneBookParser(phoneBook, '19-421-674-8974')).toBe('Phone => 19-421-674-8974, Name => C Powel, Address => Chateau des Fosses Strasbourg F-68000');
-    expect(phoneBookParser(phoneBook, '1-921-512-2222')).toBe('Phone => 1-921-512-2222, Name => Wilfrid Stevens, Address => Wild Street AA-67209');
-    expect(phoneBookParser(phoneBook, '1-908-512-2222')).toBe('Phone => 1-908-512-2222, Name => Peter O\'Brien, Address => High Street CC-47209');
-    expect(phoneBookParser(phoneBook, '1-541-754-3010')).toBe('Phone => 1-541-754-3010, Name => J Steeve, Address => 156 Alphand St.');
-    expect(phoneBookParser(phoneBook, '1-121-504-8974')).toBe('Phone => 1-121-504-8974, Name => Arthur Clarke, Address => San Antonio TT-45120');
-    expect(phoneBookParser(phoneBook, '1-498-512-2222')).toBe('Phone => 1-498-512-2222, Name => Bernard Deltheil, Address => Mount Av. Eldorado');
-    expect(phoneBookParser(phoneBook, '1-481-512-2222')).toBe('Phone => 1-481-512-2222, Name => R Steell, Address => Quora Street AB-47209');
-    expect(phoneBookParser(phoneBook, '1-098-512-2222')).toBe('Error => Too many people: 1-098-512-2222');
-    expect(phoneBookParser(phoneBook, '5-555-555-5555')).toBe('Error => Not found: 5-555-555-5555');
+    expect(phoneDirectoryParser(phoneBook, '48-421-674-8974')).toBe('Phone => 48-421-674-8974, Name => Anastasia, Address => Via Quirinal Roma');
+    expect(phoneDirectoryParser(phoneBook, '19-421-674-8974')).toBe('Phone => 19-421-674-8974, Name => C Powel, Address => Chateau des Fosses Strasbourg F-68000');
+    expect(phoneDirectoryParser(phoneBook, '1-921-512-2222')).toBe('Phone => 1-921-512-2222, Name => Wilfrid Stevens, Address => Wild Street AA-67209');
+    expect(phoneDirectoryParser(phoneBook, '1-908-512-2222')).toBe('Phone => 1-908-512-2222, Name => Peter O\'Brien, Address => High Street CC-47209');
+    expect(phoneDirectoryParser(phoneBook, '1-541-754-3010')).toBe('Phone => 1-541-754-3010, Name => J Steeve, Address => 156 Alphand St.');
+    expect(phoneDirectoryParser(phoneBook, '1-121-504-8974')).toBe('Phone => 1-121-504-8974, Name => Arthur Clarke, Address => San Antonio TT-45120');
+    expect(phoneDirectoryParser(phoneBook, '1-498-512-2222')).toBe('Phone => 1-498-512-2222, Name => Bernard Deltheil, Address => Mount Av. Eldorado');
+    expect(phoneDirectoryParser(phoneBook, '1-481-512-2222')).toBe('Phone => 1-481-512-2222, Name => R Steell, Address => Quora Street AB-47209');
+    expect(phoneDirectoryParser(phoneBook, '1-098-512-2222')).toBe('Error => Too many people: 1-098-512-2222');
+    expect(phoneDirectoryParser(phoneBook, '5-555-555-5555')).toBe('Error => Not found: 5-555-555-5555');
 
-    expect(phoneBookParser(phoneBook, '1-921-512-2222')).toBe('Phone => 1-921-512-2222, Name => Wilfrid Stevens, Address => Wild Street AA-67209');
-    expect(phoneBookParser(phoneBook, '1-121-544-8974')).toBe('Phone => 1-121-544-8974, Name => Peter Gone, Address => LA');
-    expect(phoneBookParser(phoneBook, '5-541-984-3012')).toBe('Phone => 5-541-984-3012, Name => Peter Reeves, Address => PO Box 5300 Albertville SC-28573');
-    expect(phoneBookParser(phoneBook, '19-421-674-8974')).toBe('Phone => 19-421-674-8974, Name => C Powel, Address => Chateau des Fosses Strasbourg F-68000');
-    expect(phoneBookParser(phoneBook, '3-921-333-2222')).toBe('Phone => 3-921-333-2222, Name => Roland Scorsini, Address => Bellevue Street DA-67209');
-    expect(phoneBookParser(phoneBook, '3-498-512-2222')).toBe('Phone => 3-498-512-2222, Name => Bernard Povit, Address => Hill Av. Cameron');
-    expect(phoneBookParser(phoneBook, '1-741-984-3090')).toBe('Phone => 1-741-984-3090, Name => Peter Reedgrave, Address => Chicago');
-    expect(phoneBookParser(phoneBook, '8-921-512-2222')).toBe('Phone => 8-921-512-2222, Name => Raymond Stevenson, Address => Joly Street EE-67209');
-    expect(phoneBookParser(phoneBook, '1-541-914-3010')).toBe('Phone => 1-541-914-3010, Name => E Kustur, Address => 133 Green Rd. NY-56423');
-    expect(phoneBookParser(phoneBook, '9-421-674-8974')).toBe('Error => Too many people: 9-421-674-8974');
+    expect(phoneDirectoryParser(phoneBook, '1-921-512-2222')).toBe('Phone => 1-921-512-2222, Name => Wilfrid Stevens, Address => Wild Street AA-67209');
+    expect(phoneDirectoryParser(phoneBook, '1-121-544-8974')).toBe('Phone => 1-121-544-8974, Name => Peter Gone, Address => LA');
+    expect(phoneDirectoryParser(phoneBook, '5-541-984-3012')).toBe('Phone => 5-541-984-3012, Name => Peter Reeves, Address => PO Box 5300 Albertville SC-28573');
+    expect(phoneDirectoryParser(phoneBook, '19-421-674-8974')).toBe('Phone => 19-421-674-8974, Name => C Powel, Address => Chateau des Fosses Strasbourg F-68000');
+    expect(phoneDirectoryParser(phoneBook, '3-921-333-2222')).toBe('Phone => 3-921-333-2222, Name => Roland Scorsini, Address => Bellevue Street DA-67209');
+    expect(phoneDirectoryParser(phoneBook, '3-498-512-2222')).toBe('Phone => 3-498-512-2222, Name => Bernard Povit, Address => Hill Av. Cameron');
+    expect(phoneDirectoryParser(phoneBook, '1-741-984-3090')).toBe('Phone => 1-741-984-3090, Name => Peter Reedgrave, Address => Chicago');
+    expect(phoneDirectoryParser(phoneBook, '8-921-512-2222')).toBe('Phone => 8-921-512-2222, Name => Raymond Stevenson, Address => Joly Street EE-67209');
+    expect(phoneDirectoryParser(phoneBook, '1-541-914-3010')).toBe('Phone => 1-541-914-3010, Name => E Kustur, Address => 133 Green Rd. NY-56423');
+    expect(phoneDirectoryParser(phoneBook, '9-421-674-8974')).toBe('Error => Too many people: 9-421-674-8974');
   });
 
   test('Random tests', () => {
@@ -137,7 +137,7 @@ describe('phoneBookParser', () => {
       let n = randint(0, t.length - 1);
       let toF = t[n];
 
-      expect(phoneBookParser(_dr, toF)).toBe(phoneMySol(_dr, toF));
+      expect(phoneDirectoryParser(_dr, toF)).toBe(phoneMySol(_dr, toF));
     }
   });
 });

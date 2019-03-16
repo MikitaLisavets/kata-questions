@@ -1,4 +1,4 @@
-export default function phoneBookParser(strng, num) {
+export default function phoneDirectoryParser(strng, num) {
   const phoneLines = strng.split('\n').filter(line => line.indexOf(num) >= 0);
 
   if (!phoneLines.length) return `Error => Not found: ${num}`;
